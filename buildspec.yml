@@ -22,11 +22,11 @@ phases:
       - echo "Login successful!"
       
       # Build Docker image with 'latest' tag (You can also add a dynamic tag if needed)
-      - docker build -t 010438505789.dkr.ecr.ap-south-1.amazonaws.com/infraoutput_vcloud:latest .
+      - docker build -t mallapp_vcloud .
 
       # Tag the image for ECR
-      - docker tag infraoutput_vcloud:latest 010438505789.dkr.ecr.ap-south-1.amazonaws.com/mallapp_vcloud:latest
-      - docker push 010438505789.dkr.ecr.ap-south-1.amazonaws.com/infraoutput_vcloud:latest
+      - docker tag mallapp_vcloud:latest 010438505789.dkr.ecr.ap-south-1.amazonaws.com/mallapp_vcloud:latest
+      - docker push 010438505789.dkr.ecr.ap-south-1.amazonaws.com/mallapp_vcloud:latest
 
   post_build:
     commands:
