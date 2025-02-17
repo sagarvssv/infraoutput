@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing dependencies..."
+      - python --version
+      - pip install --upgrade pip
+      - pip install flask_sqlalchemy
+      - pip install -r requirements.txt
+      - pip freeze
+
+ // build:
+  //  commands:
+    //  - echo "Logging into ECR..."
+    //  - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 676206921057.dkr.ecr.ap-south-1.amazonaws.com
+    //  - echo "Login successful!"
+      
+      # Build Docker image with 'latest' tag (You can also add a dynamic tag if needed)
+    //  - docker build -t nerrovel:latest .
+
+      # Tag the image for ECR
+    //  - docker tag nerrovel:latest 676206921057.dkr.ecr.ap-south-1.amazonaws.com/nerrovel:latest
+    //  - docker push 676206921057.dkr.ecr.ap-south-1.amazonaws.com/nerrovel:latest
+  //post_build:
+   // commands:
+     // - echo "Build completed and Docker image tagged for ECR."
+      //# Run the Flask application
+      //- echo "Starting the Flask application..."
+      //- nohup python app.py &
