@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+hooks:
+  BeforeInstall:
+    - location: stop_container.sh
+      timeout: 300
+  AfterInstall:
+    - location: restart_codedeploy_agent.sh
+      timeout: 300
+    - location: codedeploy_status_check.sh
+      timeout: 300
+  ApplicationStart:
+    - location: start_container.sh  # Start container during ApplicationStart
+      timeout: 300
+    - location: check_logs.sh
+      timeout: 300
