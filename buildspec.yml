@@ -17,4 +17,20 @@ phases:
   build:
     commands:
       - echo "Build is completed..."
-     
+      - echo "Logging into ECR..."
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 010438505789.dkr.ecr.ap-south-1.amazonaws.com
+      - echo "Login successful!"
+      
+      # Build Docker image with 'latest' tag (You can also add a dynamic tag if needed)
+      - docker build -t mallapp_vcloud .
+
+      # Tag the image for ECR
+      - docker tag mallapp_vcloud:latest 010438505789.dkr.ecr.ap-south-1.amazonaws.com/mallapp_vcloud:latest
+      - docker push 010438505789.dkr.ecr.ap-south-1.amazonaws.com/mallapp_vcloud:latest
+
+  post_build:
+    commands:
+      - echo "Build completed and Docker image tagged for ECR."
+      # Run the Flask application
+      - echo "Starting the Flask application..."
+      - nohup python app.py &     
