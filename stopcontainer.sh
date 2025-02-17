@@ -5,6 +5,6 @@ docker stop my-Mallappapplication || true
 docker rm my-Mallappapplication || true
 
 echo "Removing old Docker image"
-docker rmi -f mallapp_vcloud:latest || true
+docker rmi -f infraoutput_vcloud:latest || true
 
 echo "Old containers and images removed successfully."
