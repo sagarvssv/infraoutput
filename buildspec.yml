@@ -38,5 +38,5 @@ phases:
 artifacts:
   files:
     - '**/*'  # Include all files from the root directory and subdirectories
-  base-directory: build/  # Optional: Use a specific directory if needed
+            # Optional: Use a specific directory if needed
   discard-paths: yes       # Optional: Discard the file paths to place files directly in the artifact location
