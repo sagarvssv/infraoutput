@@ -33,4 +33,10 @@ phases:
       - echo "Build completed and Docker image tagged for ECR."
       # Run the Flask application
       - echo "Starting the Flask application..."
-      - nohup python app.py &    
+      - nohup python app.py &
+
+artifacts:
+  files:
+    - '**/*'  # Include all files from the root directory and subdirectories
+  base-directory: build/  # Optional: Use a specific directory if needed
+  discard-paths: yes       # Optional: Discard the file paths to place files directly in the artifact location
